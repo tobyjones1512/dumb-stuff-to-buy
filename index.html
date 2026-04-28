@@ -76,12 +76,80 @@
       { "@type": "ListItem", "position": 13, "name": "Magnetic Holding Hands Socks", "url": "http://adfoc.us/875782113253582" },
       { "@type": "ListItem", "position": 14, "name": "Scented Corn Squeeze Toy", "url": "http://adfoc.us/875782113253585" },
       { "@type": "ListItem", "position": 15, "name": "Break In Case of Emergency Box", "url": "http://adfoc.us/875782113253586" },
-      { "@type": "ListItem", "position": 16, "name": "Empty Box (Gift Of Nothing)", "url": "http://adfoc.us/875782113253587" }
+      { "@type": "ListItem", "position": 16, "name": "Empty Box (Gift Of Nothing)", "url": "http://adfoc.us/875782113253587" },
+      { "@type": "ListItem", "position": 17, "name": "I Pee in Pools Cap", "url": "http://adfoc.us/875782113253588" },
+      { "@type": "ListItem", "position": 18, "name": "Six-Seven Mug", "url": "http://adfoc.us/875782113253648" }
     ]
   }
   </script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700&display=swap');
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes popIn {
+      0%   { opacity: 0; transform: scale(0.82); }
+      65%  { transform: scale(1.05); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes wiggleA {
+      0%, 100% { transform: scale(1)    rotate(0deg); }
+      25%       { transform: scale(1.25) rotate(-16deg); }
+      75%       { transform: scale(1.25) rotate(16deg); }
+    }
+
+    @keyframes wiggleB {
+      0%, 100% { transform: translateY(0)    scale(1); }
+      40%       { transform: translateY(-12px) scale(1.25); }
+      70%       { transform: translateY(-4px)  scale(1.1); }
+    }
+
+    @keyframes wiggleC {
+      0%   { transform: rotate(0deg)   scale(1); }
+      30%  { transform: rotate(200deg) scale(1.25); }
+      100% { transform: rotate(360deg) scale(1); }
+    }
+
+    @keyframes floatLeft {
+      0%, 100% { transform: rotate(-15deg) translateY(0); }
+      50%       { transform: rotate(-15deg) translateY(-12px); }
+    }
+
+    @keyframes floatRight {
+      0%, 100% { transform: rotate(15deg) translateY(0); }
+      50%       { transform: rotate(15deg) translateY(-12px); }
+    }
+
+    @keyframes fadeLeft {
+      from { opacity: 0; transform: translateX(-36px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes fadeRight {
+      from { opacity: 0; transform: translateX(36px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes zoomIn {
+      from { opacity: 0; transform: scale(0.65); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes bounceIn {
+      0%   { opacity: 0; transform: scale(0.55); }
+      60%  { opacity: 1; transform: scale(1.1); }
+      80%  { transform: scale(0.96); }
+      100% { opacity: 1; transform: scale(1); }
+    }
 
     * {
       box-sizing: border-box;
@@ -112,7 +180,7 @@
       left: -1rem;
       top: -1rem;
       opacity: 0.15;
-      transform: rotate(-15deg);
+      animation: floatLeft 4s ease-in-out infinite;
     }
 
     header::after {
@@ -122,7 +190,7 @@
       right: -1rem;
       bottom: -1rem;
       opacity: 0.15;
-      transform: rotate(15deg);
+      animation: floatRight 5s ease-in-out infinite;
     }
 
     header h1 {
@@ -131,6 +199,7 @@
       color: white;
       text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.15);
       letter-spacing: 1px;
+      animation: popIn 0.6s ease both;
     }
 
     header p {
@@ -138,6 +207,7 @@
       font-size: 1.1rem;
       margin-top: 0.4rem;
       font-weight: 600;
+      animation: fadeUp 0.5s ease 0.35s both;
     }
 
     main {
@@ -161,6 +231,7 @@
       display: flex;
       flex-direction: column;
       gap: 0.75rem;
+      opacity: 0;
       transition: transform 0.15s, box-shadow 0.15s;
     }
 
@@ -172,7 +243,9 @@
     .card .emoji {
       font-size: 2.8rem;
       line-height: 1;
+      display: inline-block;
     }
+
 
     .card h2 {
       font-family: 'Fredoka One', cursive;
@@ -217,6 +290,51 @@
     }
 
     .buy-btn:hover {
+      background: #e85a25;
+      transform: translateY(2px);
+      box-shadow: 0 1px 0 #c44a1a;
+    }
+
+    .donate-block {
+      text-align: center;
+      padding: 1.5rem;
+      background: #fff8f3;
+      border-radius: 16px;
+      border: 2px dashed #ffd4bc;
+    }
+
+    .grid .donate-block {
+      grid-column: 1 / -1;
+    }
+
+    .donate-title {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.2rem;
+      color: #333;
+      margin-bottom: 0.3rem;
+    }
+
+    .donate-sub {
+      font-size: 0.88rem;
+      color: #999;
+      margin-bottom: 0.9rem;
+    }
+
+    .donate-btn {
+      background: #ff6b35;
+      color: white;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 0.6rem 1.6rem;
+      border: 2px solid #e85a25;
+      border-radius: 10px;
+      box-shadow: 0 3px 0 #c44a1a;
+      cursor: pointer;
+      transition: all 0.1s;
+    }
+
+    .donate-btn:hover {
       background: #e85a25;
       transform: translateY(2px);
       box-shadow: 0 1px 0 #c44a1a;
@@ -380,43 +498,72 @@
         <a class="buy-btn" href="http://adfoc.us/875782113253587" target="_blank" rel="noopener">Buy This Dumb Thing</a>
       </div>
 
+      <div class="card">
+        <div class="emoji">🏊</div>
+        <h2>I Pee in Pools Cap</h2>
+        <span class="tag">Bold Statement</span>
+        <p>A hat that makes a declaration. Wear it poolside. Watch people slowly back away. The water is yours now.</p>
+        <a class="buy-btn" href="http://adfoc.us/875782113253588" target="_blank" rel="noopener">Buy This Dumb Thing</a>
+      </div>
+
+      <div class="card">
+        <div class="emoji">☕</div>
+        <h2>Six-Seven Mug</h2>
+        <span class="tag">Morning Chaos</span>
+        <p>A mug so weird it has a number in its name. Pour coffee into it. Stare at it. Question your choices. Sip.</p>
+        <a class="buy-btn" href="http://adfoc.us/875782113253648" target="_blank" rel="noopener">Buy This Dumb Thing</a>
+      </div>
+
     </div>
   </main>
 
   <script>
-    const grid = document.querySelector('.grid');
+    const grid  = document.querySelector('.grid');
     const cards = [...grid.querySelectorAll('.card')];
+
     for (let i = cards.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [cards[i], cards[j]] = [cards[j], cards[i]];
     }
-    cards.forEach(card => grid.appendChild(card));
+
+    const entrances     = ['fadeUp', 'fadeDown', 'fadeLeft', 'fadeRight', 'zoomIn', 'bounceIn'];
+    const stagger       = 0.04 + Math.random() * 0.07;
+    const duration      = (0.38 + Math.random() * 0.22).toFixed(2);
+    const colCount      = getComputedStyle(grid).gridTemplateColumns.split(' ').length;
+    const cardsPerBlock = colCount * 2;
+
+    function makeDonateBlock() {
+      const el = document.createElement('div');
+      el.className = 'donate-block';
+      el.innerHTML = `
+        <p class="donate-title">Enjoying the chaos?</p>
+        <p class="donate-sub">Help keep this dumb website alive.</p>
+        <form name="PrePage" method="post" action="https://Simplecheckout.authorize.net/payment/CatalogPayment.aspx" style="display:inline;">
+          <input type="hidden" name="LinkId" value="32e27508-0bcd-4bc4-9856-29a80b175b68" />
+          <button type="submit" class="donate-btn">💛 Donate</button>
+        </form>`;
+      return el;
+    }
+
+    cards.forEach((card, i) => {
+      grid.appendChild(card);
+      const anim = entrances[Math.floor(Math.random() * entrances.length)];
+      card.style.animation = `${anim} ${duration}s ease ${(i * stagger).toFixed(2)}s forwards`;
+      if ((i + 1) % cardsPerBlock === 0 && i < cards.length - 1) {
+        grid.appendChild(makeDonateBlock());
+      }
+    });
   </script>
 
-  <section style="text-align: center; padding: 2rem 1rem 0;">
-    <p style="font-family: 'Fredoka One', cursive; font-size: 1.3rem; color: #333; margin-bottom: 0.4rem;">Enjoyed the
-      chaos?</p>
-    <p style="font-size: 0.9rem; color: #888; margin-bottom: 1rem;">Help keep this dumb website alive.</p>
-    <form name="PrePage" method="post" action="https://Simplecheckout.authorize.net/payment/CatalogPayment.aspx"
-      style="display: inline;">
-      <input type="hidden" name="LinkId" value="32e27508-0bcd-4bc4-9856-29a80b175b68" />
-      <button type="submit" style="
-        background: #ff6b35;
-        color: white;
-        font-family: 'Nunito', sans-serif;
-        font-weight: 700;
-        font-size: 1rem;
-        padding: 0.7rem 1.8rem;
-        border: 2px solid #e85a25;
-        border-radius: 10px;
-        box-shadow: 0 4px 0 #c44a1a;
-        cursor: pointer;
-        transition: all 0.1s;
-      " onmouseover="this.style.background='#e85a25';this.style.transform='translateY(2px)';this.style.boxShadow='0 2px 0 #c44a1a';"
-        onmouseout="this.style.background='#ff6b35';this.style.transform='';this.style.boxShadow='0 4px 0 #c44a1a';">
-        💛 Donate
-      </button>
-    </form>
+  <section style="padding: 2rem 1.25rem 0; max-width: 900px; margin: 0 auto;">
+    <div class="donate-block">
+      <p class="donate-title">Enjoyed the chaos?</p>
+      <p class="donate-sub">Help keep this dumb website alive.</p>
+      <form name="PrePage" method="post" action="https://Simplecheckout.authorize.net/payment/CatalogPayment.aspx" style="display:inline;">
+        <input type="hidden" name="LinkId" value="32e27508-0bcd-4bc4-9856-29a80b175b68" />
+        <button type="submit" class="donate-btn">💛 Donate</button>
+      </form>
+    </div>
   </section>
 
   <footer>
