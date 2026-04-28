@@ -37,6 +37,16 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4864773140103936"
     crossorigin="anonymous"></script>
 
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KNQ93TQ0K4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-KNQ93TQ0K4');
+  </script>
+
   <!-- Structured Data: WebSite -->
   <script type="application/ld+json">
   {
@@ -86,69 +96,170 @@
     @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700&display=swap');
 
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(28px); }
-      to   { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(28px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     @keyframes popIn {
-      0%   { opacity: 0; transform: scale(0.82); }
-      65%  { transform: scale(1.05); }
-      100% { opacity: 1; transform: scale(1); }
+      0% {
+        opacity: 0;
+        transform: scale(0.82);
+      }
+
+      65% {
+        transform: scale(1.05);
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
     }
 
     @keyframes wiggleA {
-      0%, 100% { transform: scale(1)    rotate(0deg); }
-      25%       { transform: scale(1.25) rotate(-16deg); }
-      75%       { transform: scale(1.25) rotate(16deg); }
+
+      0%,
+      100% {
+        transform: scale(1) rotate(0deg);
+      }
+
+      25% {
+        transform: scale(1.25) rotate(-16deg);
+      }
+
+      75% {
+        transform: scale(1.25) rotate(16deg);
+      }
     }
 
     @keyframes wiggleB {
-      0%, 100% { transform: translateY(0)    scale(1); }
-      40%       { transform: translateY(-12px) scale(1.25); }
-      70%       { transform: translateY(-4px)  scale(1.1); }
+
+      0%,
+      100% {
+        transform: translateY(0) scale(1);
+      }
+
+      40% {
+        transform: translateY(-12px) scale(1.25);
+      }
+
+      70% {
+        transform: translateY(-4px) scale(1.1);
+      }
     }
 
     @keyframes wiggleC {
-      0%   { transform: rotate(0deg)   scale(1); }
-      30%  { transform: rotate(200deg) scale(1.25); }
-      100% { transform: rotate(360deg) scale(1); }
+      0% {
+        transform: rotate(0deg) scale(1);
+      }
+
+      30% {
+        transform: rotate(200deg) scale(1.25);
+      }
+
+      100% {
+        transform: rotate(360deg) scale(1);
+      }
     }
 
     @keyframes floatLeft {
-      0%, 100% { transform: rotate(-15deg) translateY(0); }
-      50%       { transform: rotate(-15deg) translateY(-12px); }
+
+      0%,
+      100% {
+        transform: rotate(-15deg) translateY(0);
+      }
+
+      50% {
+        transform: rotate(-15deg) translateY(-12px);
+      }
     }
 
     @keyframes floatRight {
-      0%, 100% { transform: rotate(15deg) translateY(0); }
-      50%       { transform: rotate(15deg) translateY(-12px); }
+
+      0%,
+      100% {
+        transform: rotate(15deg) translateY(0);
+      }
+
+      50% {
+        transform: rotate(15deg) translateY(-12px);
+      }
     }
 
     @keyframes fadeLeft {
-      from { opacity: 0; transform: translateX(-36px); }
-      to   { opacity: 1; transform: translateX(0); }
+      from {
+        opacity: 0;
+        transform: translateX(-36px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
     }
 
     @keyframes fadeRight {
-      from { opacity: 0; transform: translateX(36px); }
-      to   { opacity: 1; transform: translateX(0); }
+      from {
+        opacity: 0;
+        transform: translateX(36px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
     }
 
     @keyframes fadeDown {
-      from { opacity: 0; transform: translateY(-28px); }
-      to   { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(-28px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     @keyframes zoomIn {
-      from { opacity: 0; transform: scale(0.65); }
-      to   { opacity: 1; transform: scale(1); }
+      from {
+        opacity: 0;
+        transform: scale(0.65);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
     }
 
     @keyframes bounceIn {
-      0%   { opacity: 0; transform: scale(0.55); }
-      60%  { opacity: 1; transform: scale(1.1); }
-      80%  { transform: scale(0.96); }
-      100% { opacity: 1; transform: scale(1); }
+      0% {
+        opacity: 0;
+        transform: scale(0.55);
+      }
+
+      60% {
+        opacity: 1;
+        transform: scale(1.1);
+      }
+
+      80% {
+        transform: scale(0.96);
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
     }
 
     * {
@@ -518,7 +629,7 @@
   </main>
 
   <script>
-    const grid  = document.querySelector('.grid');
+    const grid = document.querySelector('.grid');
     const cards = [...grid.querySelectorAll('.card')];
 
     for (let i = cards.length - 1; i > 0; i--) {
@@ -526,11 +637,12 @@
       [cards[i], cards[j]] = [cards[j], cards[i]];
     }
 
-    const entrances     = ['fadeUp', 'fadeDown', 'fadeLeft', 'fadeRight', 'zoomIn', 'bounceIn'];
-    const stagger       = 0.04 + Math.random() * 0.07;
-    const duration      = (0.38 + Math.random() * 0.22).toFixed(2);
-    const colCount      = getComputedStyle(grid).gridTemplateColumns.split(' ').length;
-    const cardsPerBlock = colCount * 2;
+    const entrances = ['fadeUp', 'fadeDown', 'fadeLeft', 'fadeRight', 'zoomIn', 'bounceIn'];
+    const stagger = 0.04 + Math.random() * 0.07;
+    const duration = (0.38 + Math.random() * 0.22).toFixed(2);
+    const colCount = getComputedStyle(grid).gridTemplateColumns.split(' ').length;
+    const rowsPerBlock = colCount <= 2 ? 4 : 2;
+    const cardsPerBlock = colCount * rowsPerBlock;
 
     function makeDonateBlock() {
       const el = document.createElement('div');
@@ -559,7 +671,8 @@
     <div class="donate-block">
       <p class="donate-title">Enjoyed the chaos?</p>
       <p class="donate-sub">Help keep this dumb website alive.</p>
-      <form name="PrePage" method="post" action="https://Simplecheckout.authorize.net/payment/CatalogPayment.aspx" style="display:inline;">
+      <form name="PrePage" method="post" action="https://Simplecheckout.authorize.net/payment/CatalogPayment.aspx"
+        style="display:inline;">
         <input type="hidden" name="LinkId" value="32e27508-0bcd-4bc4-9856-29a80b175b68" />
         <button type="submit" class="donate-btn">💛 Donate</button>
       </form>
