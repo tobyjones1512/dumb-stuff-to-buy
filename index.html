@@ -693,6 +693,119 @@
                 color: #666;
                 line-height: 1.6;
             }
+
+            /* Business adverts */
+            .ad-banner {
+                max-width: 900px;
+                margin: 1.5rem auto 0;
+                padding: 0 1.25rem;
+            }
+
+            .ad-label {
+                font-size: 0.65rem;
+                text-transform: uppercase;
+                letter-spacing: 1.5px;
+                color: #ccc;
+                font-weight: 700;
+                margin-bottom: 0.4rem;
+            }
+
+            .ad-card-wide {
+                background: #fff8f3;
+                border: 2px solid #ffd4bc;
+                border-radius: 16px;
+                padding: 1.25rem 1.5rem;
+                display: flex;
+                align-items: center;
+                gap: 1.25rem;
+                box-shadow: 4px 4px 0 #ffe0cc;
+            }
+
+            .ad-icon {
+                font-size: 2.5rem;
+                flex-shrink: 0;
+            }
+
+            .ad-body {
+                flex: 1;
+            }
+
+            .ad-title {
+                font-family: "Fredoka One", cursive;
+                font-size: 1.15rem;
+                color: #222;
+                margin-bottom: 0.25rem;
+            }
+
+            .ad-text {
+                font-size: 0.88rem;
+                color: #666;
+                line-height: 1.5;
+                margin: 0;
+            }
+
+            .ad-btn {
+                display: inline-block;
+                background: #ff6b35;
+                color: white;
+                text-decoration: none;
+                text-align: center;
+                padding: 0.55rem 1.1rem;
+                border-radius: 10px;
+                font-weight: 700;
+                font-size: 0.88rem;
+                border: 2px solid #e85a25;
+                box-shadow: 0 3px 0 #c44a1a;
+                transition: all 0.1s;
+                white-space: nowrap;
+                flex-shrink: 0;
+            }
+
+            .ad-btn:hover {
+                background: #e85a25;
+                transform: translateY(2px);
+                box-shadow: 0 1px 0 #c44a1a;
+            }
+
+            .grid-ad-block {
+                grid-column: 1 / -1;
+                background: #fff8f3;
+                border: 2px dashed #ffd4bc;
+                border-radius: 16px;
+                padding: 1.1rem 1.5rem;
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .grid-ad-block .ad-body {
+                flex: 1;
+            }
+
+            .grid-ad-block .ad-title {
+                font-size: 1.05rem;
+                margin-bottom: 0.2rem;
+            }
+
+            .grid-ad-block .ad-label {
+                margin-bottom: 0.25rem;
+            }
+
+            @media (max-width: 560px) {
+                .ad-card-wide {
+                    flex-direction: column;
+                    text-align: center;
+                }
+
+                .ad-btn {
+                    width: 100%;
+                }
+
+                .grid-ad-block {
+                    flex-direction: column;
+                    text-align: center;
+                }
+            }
         </style>
     </head>
 
@@ -708,6 +821,18 @@
                 Whether you're hunting for a <strong>white elephant gift idea</strong> that'll get stolen three times, a <strong>funny birthday present</strong> for someone who has everything, a perfect <strong>Secret Santa pick</strong>, or you simply want to buy something hilariously, gloriously useless - you have arrived at the right website.
                 Every single item on this page is real, available on Amazon, and completely unnecessary, which is exactly what makes them perfect.
             </p>
+        </section>
+
+        <section class="ad-banner">
+            <p class="ad-label">Sponsored</p>
+            <div class="ad-card-wide">
+                <div class="ad-icon">💻</div>
+                <div class="ad-body">
+                    <p class="ad-title">Built this dumb website? Guilty. Want a real one?</p>
+                    <p class="ad-text">Toby Jones builds custom websites in Toronto — no templates, no shortcuts. Sleek landing pages, full multi-page sites, and e-commerce built around your brand and business goals.</p>
+                </div>
+                <a class="ad-btn" href="https://tobyjones.ca/web-development/" target="_blank" rel="noopener sponsored">See My Work &rarr;</a>
+            </div>
         </section>
 
         <main>
@@ -1682,16 +1807,64 @@
                 return el;
             }
 
+            const gridAds = [
+                {
+                    icon: "💻",
+                    title: "Built this dumb website? Guilty. Want a real one?",
+                    text: "Toby Jones builds custom websites in Toronto — no templates, no compromises. Landing pages, full sites, e-commerce.",
+                    btn: "See My Work &rarr;",
+                    href: "https://tobyjones.ca/web-development/",
+                },
+                {
+                    icon: "📣",
+                    title: "If this site ranks on Google...",
+                    text: "Imagine what I can do for your business. Digital marketing &amp; advertising in Toronto — Google Ads, SEO, social, and more.",
+                    btn: "Get In Touch &rarr;",
+                    href: "https://tobyjones.ca/digital-marketing/",
+                },
+            ];
+            let adIndex = 0;
+
+            function makeAdBlock() {
+                const ad = gridAds[adIndex % gridAds.length];
+                adIndex++;
+                const el = document.createElement("div");
+                el.className = "grid-ad-block";
+                el.innerHTML = `
+        <div class="ad-icon">${ad.icon}</div>
+        <div class="ad-body">
+            <p class="ad-label">Sponsored</p>
+            <p class="ad-title">${ad.title}</p>
+            <p class="ad-text">${ad.text}</p>
+        </div>
+        <a class="ad-btn" href="${ad.href}" target="_blank" rel="noopener sponsored">${ad.btn}</a>`;
+                return el;
+            }
+
+            let insertionCount = 0;
             cards.forEach((card, i) => {
                 grid.appendChild(card);
                 const anim =
                     entrances[Math.floor(Math.random() * entrances.length)];
                 card.style.animation = `${anim} ${duration}s ease ${(i * stagger).toFixed(2)}s forwards`;
                 if ((i + 1) % cardsPerBlock === 0 && i < cards.length - 1) {
-                    grid.appendChild(makeDonateBlock());
+                    insertionCount++;
+                    grid.appendChild(insertionCount % 2 === 0 ? makeAdBlock() : makeDonateBlock());
                 }
             });
         </script>
+
+        <section class="ad-banner" style="margin-top: 2rem;">
+            <p class="ad-label">Sponsored</p>
+            <div class="ad-card-wide">
+                <div class="ad-icon">📣</div>
+                <div class="ad-body">
+                    <p class="ad-title">If this site can rank on Google, imagine what I can do for your business.</p>
+                    <p class="ad-text">Toby Jones — digital marketing &amp; advertising in Toronto. Google Ads, SEO, social media, paid campaigns. Strategy built on data, not guesswork.</p>
+                </div>
+                <a class="ad-btn" href="https://tobyjones.ca/digital-marketing/" target="_blank" rel="noopener sponsored">Get In Touch &rarr;</a>
+            </div>
+        </section>
 
         <section
             style="padding: 2rem 1.25rem 0; max-width: 900px; margin: 0 auto"
